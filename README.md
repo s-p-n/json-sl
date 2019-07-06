@@ -47,14 +47,12 @@ K..
 
 The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
 ```
-
-```
-require('json-sl')({
-	"foo": "rand(0,10)",
-	"foo[,3]": ".You Lose!",
-	"foo[3,7]": ".You Win!",
-	"foo[7,]": ".You Tie!"
-});
+    require('json-sl')({
+        "foo": "rand(0,10)",
+        "foo[,3]": ".You Lose!",
+        "foo[3,7]": ".You Win!",
+        "foo[7,]": ".You Tie!"
+    });
 ```
 
-Enjoy!
+## Enjoy!
