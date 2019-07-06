@@ -1,6 +1,6 @@
 {
   "name": "json-sl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Valid JSON, but also dynamic features such as random, references, and.. stuff.",
   "main": "run.js",
   "dependencies": {

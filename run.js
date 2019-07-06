@@ -1,9 +1,11 @@
+const path = require('path');
 function jsonSl(data) {
 	const Parser = require('jison').Parser;
 	const fs = require ('fs');
 	const Muncher = require ('./lib/muncher.js');
-	const calcLang = fs.readFileSync("./lib/calc.jison", "utf8");
-	const labelSearchLang = fs.readFileSync("./lib/labelSearch.jison", "utf8");
+	//console.log(__dirname)
+	const calcLang = fs.readFileSync(path.join(__dirname, "lib/calc.jison"), "utf8");
+	const labelSearchLang = fs.readFileSync(path.join(__dirname, "lib/labelSearch.jison"), "utf8");
 
 	const calc = new Parser(calcLang);
 	const labelSearch = new Parser(labelSearchLang);
@@ -50,7 +52,7 @@ function jsonSl(data) {
 };
 console.log(require.main === module)
 if (require.main === module) {
-	console.log(jsonSl(require(require('path').join(process.cwd(),process.argv[2]))))
+	console.log(jsonSl(require(path.join(process.cwd(),process.argv[2]))))
 } else {
 	module.exports = jsonSl;
 }

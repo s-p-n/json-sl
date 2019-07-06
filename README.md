@@ -3,6 +3,23 @@ json-sl is a project that adds dynamic things to JSON. json-sl
 will take a JSON file with added features, and output JSON
 without added features.
 
+# Requiring json-sl as an NPM Module:
+Well, I guess you can install it like this:
+```
+npm i json-sl
+```
+
+K..
+
+The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
+```
+    require('json-sl')({
+        "foo": "rand(0,10)",
+        "foo[,3]": ".You Lose!",
+        "foo[3,7]": ".You Win!",
+        "foo[7,]": ".You Tie!"
+    });
+```
 
 # Features
 * Perform math using these operators: `!%^*/+-()`
@@ -12,7 +29,7 @@ without added features.
 * Use `prop[0,5]` as a property name to overwrite `prop` if the current value is between 0-5.
 
 
-# Install
+# Install from Git
 You should have Node.js, NPM, and the 'git' command.
 These are instructions for linux, and you may have to 
 change some things for Windows.
@@ -37,22 +54,6 @@ There are some JSON files that work in the `data` directory.
 Those work well as examples. Try copying one, making changes,
 and creating something new and interesting.
 
-# Requiring json-sl as an NPM Module:
-Well, I guess you can install it like this:
-```
-npm i json-sl
-```
 
-K..
-
-The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
-```
-    require('json-sl')({
-        "foo": "rand(0,10)",
-        "foo[,3]": ".You Lose!",
-        "foo[3,7]": ".You Win!",
-        "foo[7,]": ".You Tie!"
-    });
-```
 
 ## Enjoy!
