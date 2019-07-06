@@ -77,10 +77,21 @@
                 "type": "roll",
                 "type[,opp.parry]": ".Parry",
                 "type[opp.parry,]": ".Dodge",
-                "value": "type"
+                "value": {
+                    "parry":"parent.opp.parry",
+                    "dodge":"parent.opp.dodge",
+                    "roll": "parent.roll",
+                    "type": "parent.type"
+                }
             }
         },
         "parent.does_hit": "does_hit"
     },
-    "value": "does_hit"
+    "value": {
+        "inputs": "parent.inputs",
+        "roll": "parent.roll",
+        "hit_chance": "parent.hit_chance",
+        "hit_difference": "parent.hit_difference",
+        "does_hit": "parent.does_hit"
+    }
 }
