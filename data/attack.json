@@ -1,32 +1,78 @@
 {
     "inputs": {
         "me": {
-            "dodge": 28,
-            "offense": 92,
-            "parry": 32,
+            "dodge": 20,
+            "offense": 20,
+            "parry": 20,
             "defense": "dodge+parry"
         },
         "opponent": {
-            "dodge": 34,
-            "offense": 88,
-            "parry": 35,
+            "dodge": 40,
+            "offense": 40,
+            "parry": 20,
             "defense": "dodge+parry"
         }
     },
+    "f": 0,
+    "hit_difference": 0,
     "hit_chance": {
         "me": "parent.inputs.me",
         "opp": "parent.inputs.opponent",
         "hit_difference": "me.offense - opp.defense",
-        "f": "-8.881784*10^-16 + 1.006*(hit_difference) - 0.006*(hit_difference)^2",
-        "value": "50 + f",
+        "hit_difference[84,]": 84,
+        "hit_difference[,-84]": -84,
+        "f": 0,
+        "value": 0,
         "hit_difference[,0]": {
-            "parent.value": "50 - f"
-        }
+            "value": "parent.hit_difference",
+            "parent.f": "1.006*(-value) - 0.006*(-value)^2",
+            "parent.value": "50 - parent.f"
+        },
+        "hit_difference[0,]": {
+            "value": "parent.hit_difference",
+            "parent.f": "1.006*(value) - 0.006*(value)^2",
+            "parent.value": "50 + parent.f"
+        },
+        "parent.f": "f",
+        "parent.hit_difference": "hit_difference"
     },
+    "hit_chance[,17.82]": 17.82,
     "roll": "rand(1,100)",
-    "does_hit": "roll",
-    "does_hit[1,8]": true,
-    "does_hit[8,hit_chance-10]": true,
-    "does_hit[hit_chance-10,hit_chance+10]": ".TODO: grazing blow",
-    "does_hit[hit_chance+10,100]": false
+    "min": 8,
+    "max": 93,
+    "does_hit": false,
+    "roll[1, min]": {
+        "value": "parent.roll",
+        "parent.does_hit": true
+    },
+    "roll[max,100]": {
+        "value": "parent.roll",
+        "parent.does_hit": false
+    },
+    "roll[min,max]": {
+        "value": "parent.roll",
+        "chance": "parent.hit_chance",
+        "band": 5,
+        "does_hit": false,
+        "parent.roll[chance - band, chance + band]": {
+            "value": "parent.value",
+            "parent.does_hit": ".TODO: Grazing blow"
+        },
+        "parent.roll[,chance - band]": {
+            "value": "parent.value",
+            "parent.does_hit": true
+        },
+        "parent.roll[chance + band,]": {
+            "value": "parent.value",
+            "parent.does_hit": ".TODO parry or dodge?"
+        },
+        "parent.does_hit": "does_hit"
+    },
+    "value": {
+        "inputs": "parent.inputs",
+        "roll": "parent.roll",
+        "hit_chance": "parent.hit_chance",
+        "hit_difference": "parent.hit_difference",
+        "does_hit": "parent.does_hit"
+    }
 }

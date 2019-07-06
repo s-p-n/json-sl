@@ -8,6 +8,7 @@
 \s+                   /* skip whitespace */
 [0-9]+("."[0-9]+)?\b  return 'NUMBER'
 "rand"                return 'RAND'
+"round"               return 'ROUND'
 [a-zA-Z\_][a-zA-Z0-9\_\.]* return 'REF'
 ".".*                 return 'STR'
 ","                   return ','
@@ -62,6 +63,13 @@ rand
         }
     ;
 
+round
+    : ROUND '(' e ')'
+        {
+            $$ = Math.round($e);
+        }
+    ;
+
 expressions
     : e EOF
         {return $e;}
@@ -72,6 +80,8 @@ id
         {$$ = yy.getRef($REF);}
     | rand
         {$$ = $rand;}
+    | round
+        {$$ = $round;}
     | id '[' e ',' e ']'
         {
             if ($id >= $e1 && $id < $e2) {
@@ -98,7 +108,9 @@ id
         }
     | id '[' e ']'
         {
-            if ($id === $e) {
+            console.log($id, $e)
+            if (+$id === +$e) {
+                console.log("equal!")
                 $$ = $id;
             } else {
                 $$ = undefined;
