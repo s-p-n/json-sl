@@ -1,0 +1,32 @@
+{
+    "inputs": {
+        "me": {
+            "dodge": 28,
+            "offense": 92,
+            "parry": 32,
+            "defense": "dodge+parry"
+        },
+        "opponent": {
+            "dodge": 34,
+            "offense": 88,
+            "parry": 35,
+            "defense": "dodge+parry"
+        }
+    },
+    "hit_chance": {
+        "me": "parent.inputs.me",
+        "opp": "parent.inputs.opponent",
+        "hit_difference": "me.offense - opp.defense",
+        "f": "-8.881784*10^-16 + 1.006*(hit_difference) - 0.006*(hit_difference)^2",
+        "value": "50 + f",
+        "hit_difference[,0]": {
+            "parent.value": "50 - f"
+        }
+    },
+    "roll": "rand(1,100)",
+    "does_hit": "roll",
+    "does_hit[1,8]": true,
+    "does_hit[8,hit_chance-10]": true,
+    "does_hit[hit_chance-10,hit_chance+10]": ".TODO: grazing blow",
+    "does_hit[hit_chance+10,100]": false
+}

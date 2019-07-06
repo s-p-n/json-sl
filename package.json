@@ -1,0 +1,19 @@
+{
+  "name": "json-sl",
+  "version": "1.0.0",
+  "description": "Valid JSON, but also dynamic features such as random, references, and.. stuff.",
+  "main": "run.js",
+  "dependencies": {
+    "jison": "^0.4.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dynamic",
+    "json"
+  ],
+  "author": "Spencer A. Lockhart",
+  "license": "MIT"
+}
