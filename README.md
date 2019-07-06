@@ -26,7 +26,7 @@ npm i
 ```
 
 
-# Run
+# Running in the Terminal
 To run this, get your terminal into the `json-sl` directory.
 Once you are there, pass a JSON file to run it like below:
 ```
@@ -36,3 +36,25 @@ node run data/attack.json
 There are some JSON files that work in the `data` directory.
 Those work well as examples. Try copying one, making changes,
 and creating something new and interesting.
+
+# Requiring json-sl as an NPM Module:
+Well, I guess you can install it like this:
+```
+npm i json-sl
+```
+
+K..
+
+The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
+```
+
+```
+require('json-sl')({
+	"foo": "rand(0,10)",
+	"foo[,3]": ".You Lose!",
+	"foo[3,7]": ".You Win!",
+	"foo[7,]": ".You Tie!"
+});
+```
+
+Enjoy!
