@@ -20,6 +20,12 @@ The `json-sl` module is a function that takes in JSON and spits out, well, diffe
     });
 ```
 
+# Playground
+If I were looking at something (json-sl) I had no idea what it was, but might (somehow) be related to something I was doing, I would want a playground. In fact, I would open this playground in a new tab, and try some of the features from this readme..
+
+[json-sl Playground](https://s-p-n.github.io/json-sl/playground.html)
+
+
 # Features
 * Perform math using these operators: `!%^*/+-()`
 * Generate random data using the `rand(min,max)` function.
