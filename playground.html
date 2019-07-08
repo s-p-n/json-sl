@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<title>json-sl Playground</title>
+	<link rel="stylesheet" href="./lib/jsoneditor.min.css">
+	<style>
+		#in-code,#in-tree {
+			float: left;
+			width: 48%;
+			height: 200px;
+		}
+		#out {
+			width: 96%;
+			height: 200px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>json-sl Playground</h1>
+	<div>
+		<div id="in-code"></div>
+		<div id="in-tree"></div>
+		<br style="clear: both;">
+		<div id="out"></div>
+	</div>
+	<script src="./lib/jsoneditor.min.js"></script>
+	<script src="./json-sl.js"></script>
+	<script>
+		let inCodeContainer = document.getElementById('in-code');
+		let inTreeContainer = document.getElementById('in-tree');
+		let outContainer = document.getElementById('out');
+		let json = {
+			roll: "rand(0,10)",
+			result: ".Winner",
+			"result if roll < 5": ".Loser"
+		};
+
+		function tryViewing (json) {
+			try {
+				outContainer.innerHTML = "";
+				let viewer = new JSONEditor(outContainer, {mode: 'view'});
+				viewer.setMode('tree')
+				viewer.set(jsonSL(json))
+			} catch (e) {
+				outContainer.innerHTML = '<pre>' + e + '</pre>';
+			}
+		}
+
+		let codeEditor = new JSONEditor(inCodeContainer, {
+			enableSort: false,
+			mode: 'code',
+			onChange: () => {
+				let result = codeEditor.get();
+				treeEditor.set(result);
+				tryViewing(result);
+			}
+		});
+		let treeEditor = new JSONEditor(inTreeContainer, {
+			enableSort: false,
+			mode: 'tree',
+			onChange: () => {
+				let result = treeEditor.get();
+				codeEditor.set(result);
+				tryViewing(result);
+			}
+		});
+		codeEditor.set(json);
+		treeEditor.set(json);
+		tryViewing(json);
+		
+
+	</script>
+</body>
+</html>
