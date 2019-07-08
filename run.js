@@ -23,14 +23,38 @@ function jsonSl(data) {
 		return calcGetRef(nameArr.join('.'), obj[firstName]);
 	}
 
+	function labelEvalRef (ref, obj=this.ctx) {
+		let label = this.getRef(ref, obj);
+		if (typeof label !== "object") {
+			return label;
+		}
+		while(typeof label === "object" && label.value !== undefined) {
+			label = label.value;
+		}
+
+		if (!isNaN(+label)) {
+			return +label;
+		}
+		return label;
+	}
+
 	function labelGetRef (ref, obj=this.ctx) {
 		const self = this;
 		if (ref.indexOf('.') === -1) {
-			return {
-				name: ref, 
-				valueOf:() => +obj[ref], 
-				obj: obj
-			};
+			if (!isNaN(+obj[ref])) {
+				return {
+					name: ref, 
+					valueOf:() => +obj[ref], 
+					obj: obj
+				};
+			} else if (obj[ref] !== undefined) {
+				return {
+					name: ref,
+					value: obj[ref],
+					obj: obj
+				}
+			}
+			return {name: ref, obj: obj};
 		}
 		let nameArr = ref.split('.');
 		let firstName = nameArr.shift();
@@ -43,6 +67,7 @@ function jsonSl(data) {
 
 	calc.yy.getRef = calcGetRef;
 	labelSearch.yy.getRef = labelGetRef;
+	labelSearch.yy.evalRef = labelEvalRef;
 
 	m.setValueParser(calc);
 	m.setLabelParser(labelSearch);

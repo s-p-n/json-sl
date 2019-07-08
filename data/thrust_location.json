@@ -1,56 +1,54 @@
 {
     "first_roll": "rand(1,100)",
     "second_roll": "rand(1,100)",
-    "roll_one": "first_roll",
-    "roll_two": "second_roll",
-    "first_roll[86,]": {
-        "value": ".Head",
-        "parent.second_roll[61,100]": ".Skull",
-        "parent.second_roll[53,60]": ".Jaw",
-        "parent.second_roll[43,52]": ".Cheek",
-        "parent.second_roll[39,42]": ".Ear",
-        "parent.second_roll[37,38]": ".Eye",
-        "parent.second_roll[25,36]": ".Neck",
-        "parent.second_roll[1,24]": ".Throat"
+    "result if first_roll > 86": {
+        "location": ".Head",
+        "subLocation if parent.second_roll in range(61,100)": ".Skull",
+        "subLocation if parent.second_roll in range(53,60)": ".Jaw",
+        "subLocation if parent.second_roll in range(43,52)": ".Cheek",
+        "subLocation if parent.second_roll in range(39,42)": ".Ear",
+        "subLocation if parent.second_roll in range(37,38)": ".Eye",
+        "subLocation if parent.second_roll in range(25,36)": ".Neck",
+        "subLocation if parent.second_roll in range(1,24)": ".Throat"
     },
-    "first_roll[51,86]": {
-        "value": ".Torso",
-        "parent.second_roll[67,100]": ".Chest",
-        "parent.second_roll[50,66]": ".Abdomen",
-        "parent.second_roll[33,49]": ".Stomach",
-        "parent.second_roll[21,32]": ".Underarm",
-        "parent.second_roll[1,20]": ".Hip"
+    "result if first_roll in range(51,86)": {
+        "location": ".Torso",
+        "subLocation if parent.second_roll in range(67,100)": ".Chest",
+        "subLocation if parent.second_roll in range(50,66)": ".Abdomen",
+        "subLocation if parent.second_roll in range(33,49)": ".Stomach",
+        "subLocation if parent.second_roll in range(21,32)": ".Underarm",
+        "subLocation if parent.second_roll in range(1,20)": ".Hip"
     },
-    "first_roll[31,51]": {
-        "value": ".Left Arm",
-        "parent.second_roll[75,100]": ".Left Shoulder",
-        "parent.second_roll[41,74]": ".Left Upper Arm",
-        "parent.second_roll[31,40]": ".Left Elbow",
-        "parent.second_roll[11,30]": ".Left Forearm",
-        "parent.second_roll[1,10]": ".Left Hand"
+    "result if first_roll in range(31,51)": {
+        "location": ".Left Arm",
+        "subLocation if parent.second_roll in range(75,100)": ".Left Shoulder",
+        "subLocation if parent.second_roll in range(41,74)": ".Left Upper Arm",
+        "subLocation if parent.second_roll in range(31,40)": ".Left Elbow",
+        "subLocation if parent.second_roll in range(11,30)": ".Left Forearm",
+        "subLocation if parent.second_roll in range(1,10)": ".Left Hand"
     },
-    "first_roll[23,31]": {
-        "value": ".Right Arm",
-        "parent.second_roll[87,100]": ".Right Shoulder",
-        "parent.second_roll[71,86]": ".Right Upper Arm",
-        "parent.second_roll[59,70]": ".Right Elbow",
-        "parent.second_roll[19,58]": ".Right Forearm",
-        "parent.second_roll[1,18]": ".Right Hand"
+    "result if first_roll in range(23,31)": {
+        "location": ".Right Arm",
+        "subLocation if parent.second_roll in range(87,100)": ".Right Shoulder",
+        "subLocation if parent.second_roll in range(71,86)": ".Right Upper Arm",
+        "subLocation if parent.second_roll in range(59,70)": ".Right Elbow",
+        "subLocation if parent.second_roll in range(19,58)": ".Right Forearm",
+        "subLocation if parent.second_roll in range(1,18)": ".Right Hand"
     },
-    "first_roll[6,23]": {
-        "value": ".Left Leg",
-        "parent.second_roll[81,100]": ".Groin",
-        "parent.second_roll[41,80]": ".Left Thigh",
-        "parent.second_roll[31,40]": ".Left Knee",
-        "parent.second_roll[6,30]": ".Left Shin",
-        "parent.second_roll[1,5]": ".Left Foot"
+    "result if first_roll in range(6,23)": {
+        "location": ".Left Leg",
+        "subLocation if parent.second_roll in range(81,100)": ".Groin",
+        "subLocation if parent.second_roll in range(41,80)": ".Left Thigh",
+        "subLocation if parent.second_roll in range(31,40)": ".Left Knee",
+        "subLocation if parent.second_roll in range(6,30)": ".Left Shin",
+        "subLocation if parent.second_roll in range(1,5)": ".Left Foot"
     },
-    "first_roll[,6]": {
-        "value": ".Right Leg",
-        "parent.second_roll[81,100]": ".Groin",
-        "parent.second_roll[41,80]": ".Right Thigh",
-        "parent.second_roll[31,40]": ".Right Knee",
-        "parent.second_roll[6,30]": ".Right Shin",
-        "parent.second_roll[1,5]": ".Right Foot"
+    "result if first_roll < 6": {
+        "location": ".Right Leg",
+        "subLocation if parent.second_roll in range(81,100)": ".Groin",
+        "subLocation if parent.second_roll in range(41,80)": ".Right Thigh",
+        "subLocation if parent.second_roll in range(31,40)": ".Right Knee",
+        "subLocation if parent.second_roll in range(6,30)": ".Right Shin",
+        "subLocation if parent.second_roll in range(1,5)": ".Right Foot"
     }
 }

@@ -1,7 +1,6 @@
 # json-sl
 json-sl is a project that adds dynamic things to JSON. json-sl
-will take a JSON file with added features, and output JSON
-without added features.
+files are valid JSON, not the other way around.
 
 # Requiring json-sl as an NPM Module:
 Well, I guess you can install it like this:
@@ -14,19 +13,21 @@ K..
 The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
 ```
     require('json-sl')({
-        "foo": "rand(0,10)",
-        "foo[,3]": ".You Lose!",
-        "foo[3,7]": ".You Win!",
-        "foo[7,]": ".You Tie!"
+        "list": "range(5,15)",
+        "roll": "rand(0,20)",
+        "result": ".You Lose!",
+        "result if roll in list": ".You win!"
     });
 ```
 
 # Features
 * Perform math using these operators: `!%^*/+-()`
 * Generate random data using the `rand(min,max)` function.
+* Generate ranges of numbers using `range(to)`, `range(start, end)`, or `range(start, stop, step)`
 * Reference properties using their names. `my.attack - opp.defense`
 * Use `parent` to walk up. `parent.age`
-* Use `prop[0,5]` as a property name to overwrite `prop` if the current value is between 0-5.
+* Use `prop if val is 1` as a property name to set `prop` only if `val` is `1`.
+* Use `prop if in range(0,5)` as a property name to overwrite `prop` if the current value is between 0-5.
 
 
 # Install from Git

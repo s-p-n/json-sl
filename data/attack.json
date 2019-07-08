@@ -19,20 +19,14 @@
         "me": "parent.inputs.me",
         "opp": "parent.inputs.opponent",
         "hit_difference": "me.offense - opp.defense",
-        "hit_difference[84,]": 84,
-        "hit_difference[,-84]": -84,
+        "hit_difference if > 84": 84,
+        "hit_difference if < 84": -84,
         "f": 0,
         "value": 0,
-        "hit_difference[,0]": {
-            "value": "parent.hit_difference",
-            "parent.f": "1.006*(-value) - 0.006*(-value)^2",
-            "parent.value": "50 - parent.f"
-        },
-        "hit_difference[0,]": {
-            "value": "parent.hit_difference",
-            "parent.f": "1.006*(value) - 0.006*(value)^2",
-            "parent.value": "50 + parent.f"
-        },
+        "f if hit_difference < 0": "1.006*(-hit_difference) - 0.006*(-hit_difference)^2",
+        "value if hit_difference < 0": "50 - parent.f",
+        "f if hit_difference >= 0": "1.006*(hit_difference) - 0.006*(hit_difference)^2",
+        "value if hit_difference >= 0": "50 + parent.f",
         "parent.f": "f",
         "parent.hit_difference": "hit_difference"
     },
@@ -40,47 +34,24 @@
     "band": 5,
     "min": 8,
     "max": 93,
-    "hit_chance[,min + band]": "min + band",
-    "does_hit": ".Miss",
-    "roll[1, min]": {
-        "value": "parent.roll",
-        "parent.does_hit": ".Hit"
-    },
-    "roll[max,100]": {
-        "value": "parent.roll",
-        "parent.does_hit": ".Miss"
-    },
-    "roll[min,max]": {
-        "value": "parent.roll",
+    "hit_chance if < (min + band)": "min + band",
+    "value": ".Miss",
+    "value if roll < min": ".Hit",
+    "value if roll in range(max, 100)": ".Miss",
+    "value if roll in range(min,max)": {
         "opp": "parent.inputs.opponent",
         "me": "parent.inputs.me",
         "chance": "parent.hit_chance",
         "band": "parent.band",
-        "does_hit": ".miss",
-        "parent.roll[chance - band, chance + band]": {
-            "value": "parent.value",
-            "parent.does_hit": ".Grazing Blow"
-        },
-        "parent.roll[,chance - band]": {
-            "value": "parent.value",
-            "parent.does_hit": ".Hit"
-        },
-        "parent.roll[chance + band,]": {
-            
+        "value": ".Miss",
+        "value if parent.roll in range(chance - band, chance + band)": ".Grazing Blow",
+        "value if parent.roll < (chance - band)": ".Hit",
+        "value if parent.roll > (chance + band)": {
             "opp": "parent.opp",
             "me": "parent.me",
-            "does_hit": "parent.does_hit",
-            "parent.does_hit": {
-                "opp": "parent.opp",
-                "me": "parent.me",
-                "roll": "rand(0,opp.defense)",
-                "type": "roll",
-                "type[,opp.parry]": ".Parry",
-                "type[opp.parry,]": ".Dodge",
-                "value": "type"
-            }
-        },
-        "parent.does_hit": "does_hit"
-    },
-    "value": "does_hit"
+            "roll": "rand(0,opp.defense)",
+            "value if roll < opp.parry": ".Parry",
+            "value if roll > opp.parry": ".Dodge"
+        }
+    }
 }

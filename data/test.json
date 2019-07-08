@@ -1,0 +1,6 @@
+{
+	"list": "range(5,15)",
+	"roll": "rand(0,20)",
+	"result": ".You Lose!",
+	"result if roll in list": ".You win!"
+}
