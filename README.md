@@ -2,15 +2,25 @@
 json-sl is a project that adds dynamic things to JSON. json-sl
 files are valid JSON, not the other way around.
 
-# Requiring json-sl as an NPM Module:
-Well, I guess you can install it like this:
+### Using json-sl in a `<script>` tag:
+```
+<script src="https://s-p-n.github.io/json-sl/json-sl.js"></script>
+<script>
+  jsonSL({
+    "list": "range(5,15)",
+    "roll": "rand(0,20)",
+    "result": ".You Lose!",
+    "result if roll in list": ".You win!"
+  })
+</script>
+```
+### Requiring json-sl as an NPM Module:
+You can install it like this:
 ```
 npm i json-sl
 ```
 
-K..
-
-The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. Maybe use it like this:
+The `json-sl` module is a function that takes in JSON and spits out, well, different JSON. You can use it like this:
 ```
     require('json-sl')({
         "list": "range(5,15)",
@@ -20,11 +30,11 @@ The `json-sl` module is a function that takes in JSON and spits out, well, diffe
     });
 ```
 
-# [Playground](https://s-p-n.github.io/json-sl/playground.html)
+## [Playground](https://s-p-n.github.io/json-sl/playground.html)
 If I were looking at something (json-sl) I had no idea what it was, but might (somehow) be related to something I was doing, I would want a playground. In fact, I would open [this playground](https://s-p-n.github.io/json-sl/playground.html) in a new tab, and try some of the features from this readme..
 
 
-# Features
+## Features
 * Perform math using these operators: `!%^*/+-()`
 * Generate random data using the `rand(min,max)` function.
 * Generate ranges of numbers using `range(to)`, `range(start, end)`, or `range(start, stop, step)`
@@ -34,7 +44,7 @@ If I were looking at something (json-sl) I had no idea what it was, but might (s
 * Use `prop if in range(0,5)` as a property name to overwrite `prop` if the current value is between 0-5.
 
 
-# Install from Git
+### Install from Git
 You should have Node.js, NPM, and the 'git' command.
 These are instructions for linux, and you may have to 
 change some things for Windows.
@@ -48,7 +58,7 @@ npm i
 ```
 
 
-# Running in the Terminal
+### Running in the Terminal
 To run this, get your terminal into the `json-sl` directory.
 Once you are there, pass a JSON file to run it like below:
 ```
