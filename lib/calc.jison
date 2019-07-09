@@ -60,9 +60,9 @@ rand
         {
             const min = $e1;
             const max = $e2;
-            const val = Math.floor(Math.random() * 
+            const val = Math.round(Math.random() * 
                         (max - min)) + 
-                        min + 1;
+                        min;
             $$ = {
                 min: min,
                 max: max,

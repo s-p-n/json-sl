@@ -239,9 +239,9 @@ case 3:
 
             const min = $$[$0-3];
             const max = $$[$0-1];
-            const val = Math.floor(Math.random() * 
+            const val = Math.round(Math.random() * 
                         (max - min)) + 
-                        min + 1;
+                        min;
             this.$ = {
                 min: min,
                 max: max,
@@ -1012,9 +1012,9 @@ case 2:
 
             const min = $$[$0-3];
             const max = $$[$0-1];
-            const val = Math.floor(Math.random() * 
+            const val = Math.round(Math.random() * 
                         (max - min)) + 
-                        min + 1;
+                        min;
             this.$ = {
                 min: min,
                 max: max,

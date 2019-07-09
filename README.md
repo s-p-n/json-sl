@@ -70,6 +70,7 @@ There are some JSON files that work in the `data` directory.
 Those work well as examples. Try copying one, making changes,
 and creating something new and interesting.
 
-
+# Documentation
+For more information regarding json-sl, [please visit the wiki.](https://github.com/s-p-n/json-sl/wiki)
 
 ## Enjoy!
