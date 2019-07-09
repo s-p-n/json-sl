@@ -5,13 +5,14 @@ files are valid JSON, not the other way around.
 ### Using json-sl in a `<script>` tag:
 ```
 <script src="https://s-p-n.github.io/json-sl/json-sl.js"></script>
+<textarea id="out"></textarea>
 <script>
-  jsonSL({
-    "list": "range(5,15)",
-    "roll": "rand(0,20)",
-    "result": ".You Lose!",
-    "result if roll in list": ".You win!"
-  })
+    let myJson = jsonSL({
+      "list": "range(5,15)",
+      "roll": "rand(0,20)",
+      "result": ".You Lose!",
+      "result if roll in list": ".You win!"
+    });
 </script>
 ```
 ### Requiring json-sl as an NPM Module:
