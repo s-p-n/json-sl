@@ -4,7 +4,7 @@ files are valid JSON, not the other way around.
 
 ### Using json-sl in a `<script>` tag:
 ```
-<script src="https://s-p-n.github.io/json-sl/json-sl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/json-sl@latest/json-sl.js"></script>
 <textarea id="out"></textarea>
 <script>
     let myJson = jsonSL({
